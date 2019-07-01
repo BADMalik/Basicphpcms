@@ -1,0 +1,28 @@
+
+<?php 
+	include_once $_SERVER['DOCUMENT_ROOT'].'/includes/helpers.inc.php';
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Jokes</title>
+</head>
+<body>
+<a href="?addjoke">Click to add your own jokes.</a>
+<?php foreach($jokes as $joke):?>
+<form action="?deletejoke" method="post">
+<p>
+	<?php
+	printhtml ($joke['text']);
+	 ?>
+	 <input type="hidden" name="id" value="<?php echo ($joke['id']);?>">
+	 <input type="submit" value="Delete">
+	 (by <a href="mailto:
+	 <?php printhtml($joke['email']);?>
+	 ">
+	 <?php printhtml($joke['name']);?>
+	 	</a>)
+</p></form>
+<?php endforeach; ?>
+</body>
+</html>
